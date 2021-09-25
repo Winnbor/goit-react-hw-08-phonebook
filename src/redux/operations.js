@@ -3,6 +3,32 @@ import * as contactsAPI from 'services/contacts-api';
 
 /* Authorization operations */
 
+export const getRegistered = createAsyncThunk(
+  'users/getRegistered',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await contactsAPI.getRegistered();
+      contactsAPI.setToken(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const getLoggedIn = createAsyncThunk(
+  'users/getLoggedIn',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await contactsAPI.getLoggedIn();
+      contactsAPI.setToken(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
 /* Contacts operations */
 
 export const fetchContacts = createAsyncThunk(

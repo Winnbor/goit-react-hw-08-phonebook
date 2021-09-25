@@ -1,32 +1,38 @@
-// import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import Container from 'components/Container/Container';
 import Header from 'components/Header/Header';
 import { Route, Switch } from 'react-router-dom';
 
-import MainPageView from 'views/HomePageView';
-import ContactsView from 'views/ContactsView';
-import LoginView from 'views/LoginView';
-import SignupView from 'views/SignupView';
+const HomePageView = lazy(() => import('views/HomePageView'));
+const ContactsView = lazy(() => import('views/ContactsView'));
+const LoginView = lazy(() => import('views/LoginView'));
+const SignupView = lazy(() => import('views/SignupView'));
+const NotFoundView = lazy(() => import('views/NotFoundView'));
 
 function App() {
   return (
     <>
       <Container>
         <Header />
-        <Switch>
-          <Route exact path="/">
-            <MainPageView />
-          </Route>
-          <Route path="/contacts">
-            <ContactsView />
-          </Route>
-          <Route path="/users/login">
-            <LoginView />
-          </Route>
-          <Route path="/users/signup">
-            <SignupView />
-          </Route>
-        </Switch>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Switch>
+            <Route exact path="/">
+              <HomePageView />
+            </Route>
+            <Route path="/contacts">
+              <ContactsView />
+            </Route>
+            <Route path="/users/login">
+              <LoginView />
+            </Route>
+            <Route path="/users/signup">
+              <SignupView />
+            </Route>
+            <Route>
+              <NotFoundView />
+            </Route>
+          </Switch>
+        </Suspense>
       </Container>
     </>
   );

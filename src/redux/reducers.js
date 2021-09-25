@@ -1,7 +1,42 @@
 import { combineReducers } from 'redux';
-import { createReducer } from '@reduxjs/toolkit';
-import { fetchContacts, postContact, deleteContact } from './operations';
+import { createReducer, createSlice } from '@reduxjs/toolkit';
+import {
+  getRegistered,
+  getLoggedIn,
+  fetchContacts,
+  postContact,
+  deleteContact,
+} from './operations';
 import { changeFilter } from './actions';
+
+/* Auth reducer */
+
+const initialState = {
+  user: { login: null, email: null },
+  token: null,
+  isLoggedIn: false,
+};
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  extraReducers: {
+    [getRegistered.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [getLoggedIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+  },
+});
+
+export const authReducer = authSlice.reducer;
+
+/* Contacts reducer */
 
 const items = createReducer([], {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
@@ -35,7 +70,7 @@ const error = createReducer(null, {
   [deleteContact.pending]: () => null,
 });
 
-export default combineReducers({
+export const contactsReducer = combineReducers({
   items,
   filter,
   isLoading,

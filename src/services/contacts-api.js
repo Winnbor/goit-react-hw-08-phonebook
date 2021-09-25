@@ -2,6 +2,16 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
+/* Authorization token */
+
+export const setToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const unsetToken = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
 /* Authorization */
 
 export async function getRegistered({ name, email, password }) {
