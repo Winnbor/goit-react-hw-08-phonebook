@@ -1,0 +1,17 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 600px;
+  min-height: 90vh;
+
+  margin: 5vh auto;
+
+  padding: 2% 1%;
+
+  background-color: #ebecf0;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  border-radius: 4px;
+}

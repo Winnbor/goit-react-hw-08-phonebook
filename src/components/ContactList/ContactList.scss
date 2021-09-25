@@ -1,0 +1,23 @@
+.ContactList {
+  min-width: 300px;
+  width: 60%;
+  max-width: 100%;
+}
+
+.ContactList__item {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
+
+.ContactList__name {
+  margin-right: 1em;
+}
+
+.ContactList__btn {
+  margin-left: auto;
+  padding: 3px 8px;
+}
