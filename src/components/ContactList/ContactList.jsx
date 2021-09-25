@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import * as contactsOperations from 'redux/operations';
-import { getFilteredContacts } from '../../redux/selectors';
+import { getFilteredContacts } from 'redux/selectors';
 import './ContactList.scss';
 
 function ContactList() {

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as contactsOperations from 'redux/operations';
-import Container from 'components/Container/Container';
-import ContactForm from 'components/ContactForm/ContactForm';
-import ContactList from 'components/ContactList/ContactList';
-import Filter from 'components/Filter/Filter';
+import Container from 'components/Container/Container.jsx';
+import ContactForm from 'components/ContactForm/ContactForm.jsx';
+import ContactList from 'components/ContactList/ContactList.jsx';
+import Filter from 'components/Filter/Filter.jsx';
 
-function App() {
+function ContactsView() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function App() {
       <Container>
         <h2>Add new contact</h2>
         <ContactForm />
-        <h1>Contacts</h1>
+        <h2>Contacts</h2>
         <Filter />
         <ContactList />
       </Container>
@@ -26,4 +26,4 @@ function App() {
   );
 }
 
-export default App;
+export default ContactsView;
