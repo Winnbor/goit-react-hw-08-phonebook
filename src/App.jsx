@@ -3,10 +3,10 @@ import Container from 'components/Container/Container';
 import Header from 'components/Header/Header';
 import { Route, Switch } from 'react-router-dom';
 
-import MainPageView from 'views/MainPageView';
+import MainPageView from 'views/HomePageView';
 import ContactsView from 'views/ContactsView';
 import LoginView from 'views/LoginView';
-import RegistrationView from 'views/RegistrationView';
+import SignupView from 'views/SignupView';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <LoginView />
           </Route>
           <Route path="/users/signup">
-            <RegistrationView />
+            <SignupView />
           </Route>
         </Switch>
       </Container>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as contactsOperations from 'redux/operations';
 import { getItems } from 'redux/selectors';
+import Button from 'components/Button/Button';
 import './ContactForm.scss';
 
 const INITIAL_STATE = {
@@ -77,9 +78,7 @@ function ContactForm() {
           onChange={inputChangeHandler}
         />
       </label>
-      <button type="submit" className="ContactForm__btn">
-        Add
-      </button>
+      <Button text="Add" />
     </form>
   );
 }

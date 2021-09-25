@@ -51,10 +51,12 @@ button {
   &:hover,
   &:focus-visible {
     box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+    color: orangered;
   }
 
   &:active {
     box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+    color: orangered;
   }
 }
 input {

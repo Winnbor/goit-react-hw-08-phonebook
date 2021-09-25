@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import * as contactsOperations from 'redux/operations';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import * as contactsOperations from 'redux/operations';
 import ContactForm from 'components/ContactForm/ContactForm.jsx';
-import ContactList from 'components/ContactList/ContactList.jsx';
+// import ContactList from 'components/ContactList/ContactList.jsx';
 import Filter from 'components/Filter/Filter.jsx';
 
 function ContactsView() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(contactsOperations.fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(contactsOperations.fetchContacts());
+  // }, [dispatch]);
 
   return (
     <>
@@ -18,7 +18,7 @@ function ContactsView() {
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />
-      <ContactList />
+      {/* <ContactList /> */}
     </>
   );
 }
