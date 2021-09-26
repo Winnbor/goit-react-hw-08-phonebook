@@ -1,24 +1,28 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getRegistered } from 'redux/operations';
 import Button from 'components/Button/Button';
 import './SignupForm.scss';
 
 const INITIAL_STATE = {
-  login: '',
+  name: '',
   email: '',
   password: '',
 };
 
 export default function SignupForm() {
-  const [login, setLogin] = useState(INITIAL_STATE.login);
+  const [name, setName] = useState(INITIAL_STATE.name);
   const [email, setEmail] = useState(INITIAL_STATE.email);
   const [password, setPassword] = useState(INITIAL_STATE.password);
+
+  const dispatch = useDispatch();
 
   const inputChangeHandler = e => {
     const { name, value } = e.currentTarget;
 
     switch (name) {
-      case 'login':
-        setLogin(value);
+      case 'name':
+        setName(value);
         break;
       case 'email':
         setEmail(value);
@@ -36,8 +40,9 @@ export default function SignupForm() {
     e.preventDefault();
 
     console.log('reg');
+    dispatch(getRegistered({ name, email, password }));
 
-    setLogin(INITIAL_STATE.login);
+    setName(INITIAL_STATE.name);
     setEmail(INITIAL_STATE.email);
     setPassword(INITIAL_STATE.password);
   };
@@ -49,8 +54,8 @@ export default function SignupForm() {
           <span>Login</span>
           <input
             type="text"
-            name="login"
-            value={login}
+            name="name"
+            value={name}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name can only include letters, apostrophes, dashes, and spaces."
             required

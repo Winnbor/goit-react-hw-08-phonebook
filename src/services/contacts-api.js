@@ -31,6 +31,16 @@ export async function getLoggedIn({ email, password }) {
   return data;
 }
 
+export async function getLoggedOut() {
+  const { data } = await axios.post('/users/logout');
+  return data;
+}
+
+export async function getCurrentUser() {
+  const { data } = await axios.get('/users/current');
+  return data;
+}
+
 /* Contacts */
 
 export async function fetchContacts() {

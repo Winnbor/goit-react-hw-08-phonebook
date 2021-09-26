@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const getUsername = state => state.auth.user.login;
+const getUserName = state => state.auth.user.name;
 
 const getIsLoggedIn = state => state.auth.isLoggedIn;
 
@@ -18,4 +18,4 @@ const getFilteredContacts = createSelector(
   },
 );
 
-export { getUsername, getIsLoggedIn, getItems, getFilter, getFilteredContacts };
+export { getUserName, getIsLoggedIn, getItems, getFilter, getFilteredContacts };

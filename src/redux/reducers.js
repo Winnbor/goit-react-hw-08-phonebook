@@ -3,6 +3,8 @@ import { createReducer, createSlice } from '@reduxjs/toolkit';
 import {
   getRegistered,
   getLoggedIn,
+  getLoggedOut,
+  getCurrentUser,
   fetchContacts,
   postContact,
   deleteContact,
@@ -12,7 +14,7 @@ import { changeFilter } from './actions';
 /* Auth reducer */
 
 const initialState = {
-  user: { login: null, email: null },
+  user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
 };
@@ -21,14 +23,23 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [getRegistered.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [getRegistered.fulfilled](state, { payload }) {
+      state.user = payload.user;
+      state.token = payload.token;
       state.isLoggedIn = true;
     },
-    [getLoggedIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [getLoggedIn.fulfilled](state, { payload }) {
+      state.user = payload.user;
+      state.token = payload.token;
+      state.isLoggedIn = true;
+    },
+    [getLoggedOut.fulfilled](state, _) {
+      state.user = initialState.user;
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    [getCurrentUser.fulfilled](state, { payload }) {
+      state.user = payload;
       state.isLoggedIn = true;
     },
   },

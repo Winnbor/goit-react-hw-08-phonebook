@@ -1,11 +1,23 @@
-import Button from 'components/Button/Button';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserName } from 'redux/selectors';
+import { getLoggedOut } from 'redux/operations';
 import './LogoutNav.scss';
 
-export default function LogoutNav({ login = 'User' }) {
+export default function LogoutNav() {
+  const user = useSelector(getUserName);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    console.log('logout');
+    dispatch(getLoggedOut());
+  };
+
   return (
     <div className="LogoutNav">
-      <span className="LogoutNav__greeting">Hello, {login}</span>
-      <Button text="Log Out" />
+      <span className="LogoutNav__greeting">Hello, {user ?? 'User'}</span>
+      <button className="LogoutNav__btn" type="button" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 }

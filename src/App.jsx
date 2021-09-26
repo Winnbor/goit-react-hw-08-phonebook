@@ -1,7 +1,11 @@
 import { lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import * as contactsOperations from 'redux/operations';
+
 import Container from 'components/Container/Container';
 import Header from 'components/Header/Header';
-import { Route, Switch } from 'react-router-dom';
 
 const HomePageView = lazy(() => import('views/HomePageView'));
 const ContactsView = lazy(() => import('views/ContactsView'));
@@ -10,6 +14,12 @@ const SignupView = lazy(() => import('views/SignupView'));
 const NotFoundView = lazy(() => import('views/NotFoundView'));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(contactsOperations.getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <Container>

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getLoggedIn } from 'redux/operations';
 import Button from 'components/Button/Button';
 import './LoginForm.scss';
 
@@ -10,6 +12,8 @@ const INITIAL_STATE = {
 export default function LoginForm() {
   const [email, setEmail] = useState(INITIAL_STATE.email);
   const [password, setPassword] = useState(INITIAL_STATE.password);
+
+  const dispatch = useDispatch();
 
   const inputChangeHandler = e => {
     const { name, value } = e.currentTarget;
@@ -31,6 +35,7 @@ export default function LoginForm() {
     e.preventDefault();
 
     console.log('log');
+    dispatch(getLoggedIn({ email, password }));
 
     setEmail(INITIAL_STATE.email);
     setPassword(INITIAL_STATE.password);
