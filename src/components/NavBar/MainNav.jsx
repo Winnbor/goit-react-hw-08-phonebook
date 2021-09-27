@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { getIsLoggedIn } from 'redux/selectors';
 import './MainNav.scss';
 
-export default function Navigation() {
+export default function MainNav() {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
-    <div>
+    <div className="MainNav">
       <NavLink
         exact
         to="/"

@@ -1,7 +1,12 @@
+import Demo from 'components/Animations/Demo';
+import Cover from 'components/Animations/Cover';
+
 export default function MainPageView() {
   return (
     <>
-      <h1>PhoneBook</h1>
+      <Demo />
+
+      <Cover />
     </>
   );
 }

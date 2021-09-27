@@ -1,3 +1,10 @@
+.MainNav {
+  @media screen and (max-width: 419px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .nav-link {
   font-size: 14px;
   font-weight: 600;
@@ -9,6 +16,10 @@
 
 .nav-link:not(:last-child) {
   margin-right: 1em;
+
+  @media screen and (max-width: 419px) {
+    margin-bottom: 0.5em;
+  }
 }
 
 .nav-link:hover {

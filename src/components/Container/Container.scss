@@ -4,14 +4,19 @@
   align-items: center;
 
   width: 100%;
-  max-width: 700px;
-  min-height: 96vh;
+  min-height: 100vh;
 
-  margin: 2vh auto;
-
-  padding: 1.5em;
+  padding: 1em;
 
   background-color: #ebecf0;
   box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   border-radius: 4px;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 700px;
+    min-height: 96vh;
+
+    margin: 2vh auto;
+    padding: 1.5em;
+  }
 }

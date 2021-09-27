@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-image: url(./images/memphis-colorful.png);
+
+  @media screen and (max-width: 419px) {
+    font-size: 14px;
+  }
 }
 
 ul {
@@ -77,6 +81,10 @@ input {
 label {
   span {
     margin-bottom: 5px;
+  }
+
+  @media screen and (max-width: 419px) {
+    width: 100%;
   }
 }
 
