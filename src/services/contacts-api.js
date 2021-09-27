@@ -60,3 +60,11 @@ export async function deleteContact(id) {
   const { data } = await axios.delete(`/contacts/${id}`);
   return data;
 }
+
+export async function editContact({ id, newName, newNumber }) {
+  const { data } = await axios.patch(`/contacts/${id}`, {
+    name: newName,
+    number: newNumber,
+  });
+  return data;
+}

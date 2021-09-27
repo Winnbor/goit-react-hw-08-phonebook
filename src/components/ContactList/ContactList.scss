@@ -5,19 +5,37 @@
 }
 
 .ContactList__item {
-  display: flex;
-  align-items: center;
-
   &:not(:last-child) {
     margin-bottom: 1em;
   }
 }
 
-.ContactList__name {
+.Contact__holder {
+  display: flex;
+  align-items: center;
+  height: 2em;
+}
+
+.Contact__name {
   margin-right: 1em;
 }
 
-.ContactList__btn {
-  margin-left: auto;
+.Contact__btn {
+  margin-left: 1em;
   padding: 3px 8px;
+
+  &--edit {
+    margin-left: auto;
+  }
+}
+
+.ContactForm--editor {
+  align-items: center;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.ContactForm__input--editor {
+  width: 100px;
+  margin-right: 1em;
 }

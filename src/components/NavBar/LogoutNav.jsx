@@ -8,7 +8,6 @@ export default function LogoutNav() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    console.log('logout');
     dispatch(getLoggedOut());
   };
 

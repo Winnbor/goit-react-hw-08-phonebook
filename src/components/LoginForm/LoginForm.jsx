@@ -34,7 +34,6 @@ export default function LoginForm() {
   const submitHandler = e => {
     e.preventDefault();
 
-    console.log('log');
     dispatch(getLoggedIn({ email, password }));
 
     setEmail(INITIAL_STATE.email);

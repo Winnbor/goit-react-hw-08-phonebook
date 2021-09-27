@@ -8,7 +8,6 @@ export const getRegistered = createAsyncThunk(
   async ({ name, email, password }, { rejectWithValue }) => {
     try {
       const data = await contactsAPI.getRegistered({ name, email, password });
-      console.log(data);
       contactsAPI.setToken(data.token);
       return data;
     } catch (error) {
@@ -22,7 +21,6 @@ export const getLoggedIn = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const data = await contactsAPI.getLoggedIn({ email, password });
-      console.log(data);
       contactsAPI.setToken(data.token);
       return data;
     } catch (error) {
@@ -36,7 +34,6 @@ export const getLoggedOut = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await contactsAPI.getLoggedOut();
-      console.log(data);
       contactsAPI.unsetToken(data.token);
       return data;
     } catch (error) {
@@ -52,7 +49,6 @@ export const getCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      console.log('No Token');
       return rejectWithValue();
     }
 
@@ -60,7 +56,6 @@ export const getCurrentUser = createAsyncThunk(
 
     try {
       const data = await contactsAPI.getCurrentUser();
-      console.log('current', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -104,6 +99,22 @@ export const deleteContact = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await contactsAPI.deleteContact(id);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async ({ id, newName, newNumber }, { rejectWithValue }) => {
+    try {
+      const response = await contactsAPI.editContact({
+        id,
+        newName,
+        newNumber,
+      });
       return response;
     } catch (error) {
       return rejectWithValue(error.message);

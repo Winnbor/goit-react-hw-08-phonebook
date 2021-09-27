@@ -39,7 +39,6 @@ export default function SignupForm() {
   const submitHandler = e => {
     e.preventDefault();
 
-    console.log('reg');
     dispatch(getRegistered({ name, email, password }));
 
     setName(INITIAL_STATE.name);
