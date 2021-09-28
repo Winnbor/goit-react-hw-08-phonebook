@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as contactsAPI from 'services/contacts-api';
+import { toast } from 'react-toastify';
 
 /* Authorization operations */
 
@@ -9,8 +10,11 @@ export const getRegistered = createAsyncThunk(
     try {
       const data = await contactsAPI.getRegistered({ name, email, password });
       contactsAPI.setToken(data.token);
+      toast.success(`Hello, ${name}, you are successfully registered`);
       return data;
     } catch (error) {
+      toast.error(error.message);
+
       return rejectWithValue(error.message);
     }
   },
@@ -24,6 +28,8 @@ export const getLoggedIn = createAsyncThunk(
       contactsAPI.setToken(data.token);
       return data;
     } catch (error) {
+      toast.error(error.message);
+
       return rejectWithValue(error.message);
     }
   },
@@ -37,6 +43,8 @@ export const getLoggedOut = createAsyncThunk(
       contactsAPI.unsetToken(data.token);
       return data;
     } catch (error) {
+      toast.error(error.message);
+
       return rejectWithValue(error.message);
     }
   },
@@ -49,6 +57,8 @@ export const getCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
+      toast('🦄 Log in or Sign up, please');
+
       return rejectWithValue();
     }
 
@@ -58,6 +68,8 @@ export const getCurrentUser = createAsyncThunk(
       const data = await contactsAPI.getCurrentUser();
       return data;
     } catch (error) {
+      toast('🦄 Log in or Sign up, please');
+
       return rejectWithValue(error.message);
     }
   },
